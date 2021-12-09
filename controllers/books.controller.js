@@ -54,6 +54,7 @@ const DeleteCreditcard = (req, res) => {
 //         res.send(result);
 //     });
 // };
+
 module.exports = {
     getAllCreditcard,
     getCreditcardById,
