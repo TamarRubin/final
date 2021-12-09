@@ -36,7 +36,7 @@ const AddBook = (req, res) => {
         });
 };
 
-const DeleteCreditcard = (req, res) => {
+const DeleteBook = (req, res) => {
     db.query(`DELETE FROM books where id=${req.body.idbooks}`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
@@ -56,9 +56,9 @@ const DeleteCreditcard = (req, res) => {
 // };
 
 module.exports = {
-    getAllCreditcard,
-    getCreditcardById,
-    AddCreditcard,
-    DeleteCreditcard,
+    getAllBooks,
+    getBookById,
+    AddBook,
+    DeleteBook
     //UpdateCreditcard
 };
