@@ -19,7 +19,7 @@ const getBookById = (req, res) => {
 const AddBook = (req, res) => {
     //  var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
     var book_id = req.body.idbooks;
-    var book_isbn = req.body.customer_id;
+    var book_isbn = req.body.booksisbn;
     var book_name = req.body.booksname;
     var book_publishing = req.body.bookspublishing;
     var book_writer = req.body.bookswriter;
