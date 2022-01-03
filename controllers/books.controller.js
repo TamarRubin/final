@@ -18,22 +18,25 @@ const getBookById = (req, res) => {
 
 const AddBook = (req, res) => {
     //  var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-    var book_id = req.body.idbooks;
-    var book_isbn = req.body.booksisbn;
-    var book_name = req.body.booksname;
-    var book_publishing = req.body.bookspublishing;
-    var book_writer = req.body.bookswriter;
-    var book_status = req.body.booksstatus;
-    var book_picture = req.body.bookspicture;
-    var book_col = req.body.bookscol;
+    //var raq_json = req.body
+    
+    // var book_id = req.body.bookID;
+     var book_isbn = req.body.isbn;
+    var book_name = req.body.name;
+     var book_publishing = req.body.publishing;
+     var book_writer = req.body.writer;
+     var book_status = req.body.status;
+    // var book_picture = req.body.picture;
+  
 
 
-    db.query(`INSERT INTO books (book_id, book_isbn, book_name, book_publishing, book_writer, book_status, book_picture, book_col) VALUES 
-    (${book_id}, ${book_isbn},${book_name}, ${book_publishing},${book_writer}, ${book_status}, ${book_picture}, ${book_col})`, function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            res.send(result);
-        });
+     db.query(`INSERT INTO books (isbn, name, publishing, writer, status) VALUES 
+     ( ${book_isbn},${book_name}, ${book_publishing},${book_writer}, ${book_status})`, function (err, result, fields) {
+          if (err) throw err;
+           console.log(result);
+             res.send(result);
+         });
+    res.send(result);
 };
 
 const DeleteBook = (req, res) => {

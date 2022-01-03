@@ -6,7 +6,7 @@ var con = mysql.createConnection({
     port: "3306",
     user: "Tamar",
     password: "tamarubin8484",
-    database: 'secondhandbooks'
+    database: 'DBProject'
 });
 
 con.connect(function (err) {

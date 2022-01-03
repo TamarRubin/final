@@ -17,7 +17,8 @@ router.post("/DeleteUser", DeleteUser);
 //router.post("/UpdateNameCustomer", UpdateNameCustomer);
 
 router.get("/getAllAds", getAllAds);
-router.get("/ getAdById", getAdById);
+//router.get("/getAllOkAds", getAllOkAds);
+//router.get("/ getAdById", getAdsById);
 router.post("/AddAd", AddAd);
 router.post("/DeleteAd", DeleteAd);
 //router.post("/UpdateCreditcard", UpdateCreditcard);

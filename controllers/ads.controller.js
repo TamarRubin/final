@@ -8,7 +8,69 @@ const getAllAds = (req, res) => {
         res.send(result);
     });
 };
-const getAdById = (req, res) => {
+const getAllOkAds = (req, res) => {
+    db.query("SELECT * FROM ads whrere ads.status = 1", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsBywriter = (req, res) => {
+    db.query(`SELECT * FROM ads join users on ads.bookID = users.id 
+        where users.writerID=${req.params.writerID} and ads.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsByCity = (req, res) => {
+    db.query(`SELECT * FROM ads join users on ads.userID = users.id join cities on cities.id = users.cityID
+        where cities.id=${req.params.cityID} and ads.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsByNeighberhood = (req, res) => {
+    db.query(`SELECT * FROM ads join users on ads.userID = users.id join neighberhood on neighberhood.id = users.neighberhoodID
+        where neighberhood.id=${req.params.cityID} and ads.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsByPublishing = (req, res) => {
+    db.query(`SELECT * FROM ads join books on ads.bookID = books.id join publishing on publishing.id = books.publishingID
+        where publishing.id=${req.params.publishingID} and ads.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsByIsbn = (req, res) => {
+    db.query(`SELECT * FROM ads join books on ads.bookID = books.id
+        where books.isbn=${req.params.isbn} and ads.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsByNameBook = (req, res) => {
+    db.query(`SELECT * FROM ads join books on ads.bookID = books.id 
+        where books.name=${req.params.name} and ads.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getAdsBydId = (req, res) => {
     db.query(`SELECT * FROM ads where id=${req.params.idads}`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
@@ -46,7 +108,7 @@ const DeleteAd = (req, res) => {
 
 // const UpdateCreditcard = (req, res) => {
 //     // "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"
-//     db.query(`UPDATE books set numCard  = ${req.body.numCard}validity =${req.body.validity}cvv = ${req.body.cvv}tz = ${req.body.tz}customer_id =  ${customer_id} where customer_id = ${req.body.idbooks}`, function (err, result, fields) {
+//     db.query(`UPDATE users set numCard  = ${req.body.numCard}validity =${req.body.validity}cvv = ${req.body.cvv}tz = ${req.body.tz}customer_id =  ${customer_id} where customer_id = ${req.body.idbooks}`, function (err, result, fields) {
 //         if (err) throw err;
 //         console.log(result);
 //         res.send(result);
@@ -55,7 +117,8 @@ const DeleteAd = (req, res) => {
 
 module.exports = {
     getAllAds,
-    getAddById,
+    getAllOkAds,
+    getAdsBydId,
     AddAd,
     DeleteAd
     
