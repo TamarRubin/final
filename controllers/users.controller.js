@@ -15,21 +15,29 @@ const getUserById = (req, res) => {
         res.send(result);
     });
 };
-
+const getUserByPassword = (req, res) => {
+    var mail=JSON.stringify(req.body.email)
+    var password=JSON.stringify(req.body.password)
+    db.query(`SELECT * FROM users where password=${password} and mail=${mail}`, function (err, result, fielgit) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
 const AddUser = (req, res) => {
     //  var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-    var user_id = req.body.idusers;
-    var user_name = req.body.username;
-    var user_phone1 = req.body.userphone1;
-    var user_phone2 = req.body.userphone2;
-    var user_adress = req.body.useradress;
-    var user_mail = req.body.usermail;
-    var user_password = req.body.password;
+    
+    var user_name = JSON.stringify(req.body.name);
+    var user_phone = JSON.stringify(req.body.phone);
+
+  var user_mail=JSON.stringify(req.body.mail)
+  var user_password=JSON.stringify(req.body.password)
+
     
 
 
-    db.query(`INSERT INTO users (user_id, user_name, user_phone1, user_phone2, user_adress, user_mail, user_password) VALUES 
-    (${user_id}, ${user_name},${user_phone1}, ${user_phone2},${user_adress}, ${user_mail}, ${user_password})`, function (err, result, fields) {
+    db.query(`INSERT INTO users (name,phone,mail,password) VALUES 
+    ( ${user_name},${user_phone},${user_mail},${user_password})`, function (err, result, fields) {
             if (err) throw err;
             console.log(result);
             res.send(result);
@@ -59,6 +67,6 @@ module.exports = {
     getAllUsers,
     getUserById,
     AddUser,
-    DeleteUser
-    
+    DeleteUser,
+    getUserByPassword
 };

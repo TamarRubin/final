@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { getAllBooks, getBookById, AddBook, DeleteBook } = require("../controllers/books.controller")
-const { getAllUsers, getUserById, AddUser, DeleteUser} = require("../controllers/users.controller")
+const { getAllUsers, getUserById, AddUser, DeleteUser, getUserByPassword} = require("../controllers/users.controller")
 const { getAllAds, getAdById, AddAd, DeleteAd } = require("../controllers/ads.controller")
 //const { getAllDeal, getDealById, AddDeal, DeleteDeal, UpdateDeal } = require("../controllers/deal.controller")
 
@@ -12,7 +12,9 @@ router.post("/DeleteBook", DeleteBook);
 
 router.get("/getAllUsers", getAllUsers);
 router.get("/getUserById/:id", getUserById);
+router.post("/getUserByPassword", getUserByPassword);
 router.post("/AddUser", AddUser);
+
 router.post("/DeleteUser", DeleteUser);
 //router.post("/UpdateNameCustomer", UpdateNameCustomer);
 
