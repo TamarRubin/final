@@ -2,7 +2,7 @@
 var db = require('../db');
 
 const getAllBooks = (req, res) => {
-    db.query("SELECT * FROM books", function (err, result, fields) {
+    db.query("SELECT * FROM books where confirmed = 1", function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -10,6 +10,14 @@ const getAllBooks = (req, res) => {
 };
 const getBookById = (req, res) => {
     db.query(`SELECT * FROM books where id=${req.params.id}`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getIdBookByName = (req, res) => {
+    db.query(`SELECT id FROM books where name=${req.params.name} and confirmed = 1`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -27,7 +35,8 @@ const AddBook = (req, res) => {
      var book_writer = req.body.writer;
      var book_status = req.body.status;
     // var book_picture = req.body.picture;
-  
+    
+    var writerId = 
 
 
      db.query(`INSERT INTO books (isbn, name, publishing, writer, status) VALUES 
@@ -62,6 +71,8 @@ module.exports = {
     getAllBooks,
     getBookById,
     AddBook,
-    DeleteBook
+    DeleteBook,
+    getIdBookByName
+
     //UpdateCreditcard
 };

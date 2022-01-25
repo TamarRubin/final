@@ -8,14 +8,21 @@ const getAllAds = (req, res) => {
         res.send(result);
     });
 };
+
 const getAllOkAds = (req, res) => {
-    db.query("SELECT * FROM ads whrere ads.status = 1", function (err, result, fields) {
+    db.query("SELECT * FROM ads where ads.status = 1", function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);
     });
 };
-
+const getFirstOkAd = (req, res) => {
+    db.query("SELECT * FROM ads where ads.status = 1 and ads.id = 1", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
 const getAdsBywriter = (req, res) => {
     db.query(`SELECT * FROM ads join users on ads.bookID = users.id 
         where users.writerID=${req.params.writerID} and ads.status = 1`, function (err, result, fields) {
@@ -80,16 +87,17 @@ const getAdsBydId = (req, res) => {
 
 const AddAd = (req, res) => {
     //  var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-    var ad_id = req.body.idads;
+    
     var ad_iduser = req.body.adsiduser;
     var ad_idbook = req.body.adsidbook;
     var ad_price = req.body.adsprice;
     var ad_type = req.body.adstype;
     
+    
 
 
     db.query(`INSERT INTO users (ad_id, ad_iduser, ad_idbook, ad_price, ad_type) VALUES 
-    (${ad_id}, ${ad_iduser},${ad_idbook}, ${ad_price},${ad_type})`, function (err, result, fields) {
+    (${ad_iduser},${ad_idbook}, ${ad_price},${ad_type})`, function (err, result, fields) {
             if (err) throw err;
             console.log(result);
             res.send(result);
@@ -117,9 +125,10 @@ const DeleteAd = (req, res) => {
 
 module.exports = {
     getAllAds,
+    
     getAllOkAds,
     getAdsBydId,
     AddAd,
-    DeleteAd
-    
+    DeleteAd,
+    getFirstOkAd
 };

@@ -21,7 +21,7 @@ const getUserByPassword = (req, res) => {
     db.query(`SELECT * FROM users where password=${password} and mail=${mail}`, function (err, result, fielgit) {
         if (err) throw err;
         console.log(result);
-        res.send(result);
+        res.send(result[0]);
     });
 };
 const AddUser = (req, res) => {

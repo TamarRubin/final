@@ -1,0 +1,21 @@
+
+const getWriterById = (req, res) => {
+    db.query(`SELECT * FROM writers where id=${req.params.id}`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+const getWriterIdByName = (req, res) => {
+    db.query(`SELECT id FROM writers where id=${req.params.id}`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
+module.exports = {
+    getAllcities,
+    getCityById
+};

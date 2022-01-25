@@ -13,3 +13,8 @@ const getCityById = (req, res) => {
         res.send(result);
     });
 };
+
+module.exports = {
+    getAllcities,
+    getCityById
+};
