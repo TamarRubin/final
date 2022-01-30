@@ -10,7 +10,14 @@ const getAllAds = (req, res) => {
 };
 
 const getAllOkAds = (req, res) => {
-    db.query("SELECT * FROM ads where ads.status = 1", function (err, result, fields) {
+    db.query("SELECT * FROM ads where status = 1", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+const getAllAdsToConfirm = (req, res) => {
+    db.query("SELECT * FROM ads where status = 0", function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -88,16 +95,21 @@ const getAdsBydId = (req, res) => {
 const AddAd = (req, res) => {
     //  var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
     
+        
     var ad_iduser = req.body.adsiduser;
-    var ad_idbook = req.body.adsidbook;
+    var ad_adsNamebook = req.body.adsNamebook;
     var ad_price = req.body.adsprice;
     var ad_type = req.body.adstype;
+    var bookId = 0
     
-    
+    db.query(`SELECT id FROM books where name=${adsNamebook}`, function (err, result, fields) {
+        if (err) throw err;
+        bookId=result;
+    });
 
 
     db.query(`INSERT INTO users (ad_id, ad_iduser, ad_idbook, ad_price, ad_type) VALUES 
-    (${ad_iduser},${ad_idbook}, ${ad_price},${ad_type})`, function (err, result, fields) {
+    (${ad_iduser},${bookId}, ${ad_price},${ad_type})`, function (err, result, fields) {
             if (err) throw err;
             console.log(result);
             res.send(result);

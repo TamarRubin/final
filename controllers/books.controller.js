@@ -17,7 +17,9 @@ const getBookById = (req, res) => {
 };
 
 const getIdBookByName = (req, res) => {
-    db.query(`SELECT id FROM books where name=${req.params.name} and confirmed = 1`, function (err, result, fields) {
+    
+    var bookName = JSON.stringify(req.params.id); 
+    db.query(`SELECT id FROM books where name=${bookName} and confirmed = 1`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -29,18 +31,18 @@ const AddBook = (req, res) => {
     //var raq_json = req.body
     
     // var book_id = req.body.bookID;
-     var book_isbn = req.body.isbn;
+    var book_isbn = req.body.isbn;
     var book_name = req.body.name;
      var book_publishing = req.body.publishing;
      var book_writer = req.body.writer;
      var book_status = req.body.status;
-    // var book_picture = req.body.picture;
+     var book_image = req.body.image;
+     var book_confirm = req.body.confirm;
     
-    var writerId = 
 
 
      db.query(`INSERT INTO books (isbn, name, publishing, writer, status) VALUES 
-     ( ${book_isbn},${book_name}, ${book_publishing},${book_writer}, ${book_status})`, function (err, result, fields) {
+     ( ${book_isbn},${book_name}, ${book_publishing},${book_writer}, ${book_status}, ${book_image}, ${book_confirm})`, function (err, result, fields) {
           if (err) throw err;
            console.log(result);
              res.send(result);

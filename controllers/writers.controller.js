@@ -8,7 +8,7 @@ const getWriterById = (req, res) => {
 };
 
 const getWriterIdByName = (req, res) => {
-    db.query(`SELECT id FROM writers where id=${req.params.id}`, function (err, result, fields) {
+    db.query(`SELECT id FROM writers where name=${req.params.name}`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);

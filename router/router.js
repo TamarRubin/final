@@ -8,7 +8,7 @@ const { getAllneighberhoods, getNeighberhoodById } = require("../controllers/nei
 
 router.get("/getAllBooks", getAllBooks);
 router.get("/getBookById/:id", getBookById);
-router.get("/getIdBookByName/:name", getIdBookByName);
+router.get("/getIdBookByName/:id", getIdBookByName);
 router.post("/AddBook", AddBook);
 router.post("/DeleteBook", DeleteBook);
 //router.post("/UpdateRoom", UpdateRoomName);
