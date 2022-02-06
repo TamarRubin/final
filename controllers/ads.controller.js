@@ -97,18 +97,18 @@ const AddAd = (req, res) => {
     
         
     var ad_iduser = req.body.adsiduser;
-    var ad_adsNamebook = req.body.adsNamebook;
+    var bookId = req.body.adsNamebook;
     var ad_price = req.body.adsprice;
     var ad_type = req.body.adstype;
-    var bookId = 0
+   
     
-    db.query(`SELECT id FROM books where name=${adsNamebook}`, function (err, result, fields) {
-        if (err) throw err;
-        bookId=result;
-    });
+    // db.query(`SELECT id FROM books where name=${adsNamebook}`, function (err, result, fields) {
+    //     if (err) throw err;
+    //     bookId=result;
+    // });
 
 
-    db.query(`INSERT INTO users (ad_id, ad_iduser, ad_idbook, ad_price, ad_type) VALUES 
+    db.query(`INSERT INTO ads (userID, bookID, price, status) VALUES 
     (${ad_iduser},${bookId}, ${ad_price},${ad_type})`, function (err, result, fields) {
             if (err) throw err;
             console.log(result);

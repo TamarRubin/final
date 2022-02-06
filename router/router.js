@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getAllBooks, getBookById, AddBook, DeleteBook,getIdBookByName} = require("../controllers/books.controller")
+const { getAllBooks, getBookById, AddBook, DeleteBook,getIdBookByName, getIdBookByNameNotOk} = require("../controllers/books.controller")
 const { getAllUsers, getUserById, AddUser, DeleteUser, getUserByPassword} = require("../controllers/users.controller")
 const { getAllAds, getAdById,getAllOkAds,getFirstOkAd, AddAd, DeleteAd } = require("../controllers/ads.controller");
 const { getAllcities, getCityById } = require("../controllers/cities.controller");
@@ -9,6 +9,7 @@ const { getAllneighberhoods, getNeighberhoodById } = require("../controllers/nei
 router.get("/getAllBooks", getAllBooks);
 router.get("/getBookById/:id", getBookById);
 router.get("/getIdBookByName/:id", getIdBookByName);
+router.get("/getIdBookByNameNotOk/:id",getIdBookByNameNotOk);
 router.post("/AddBook", AddBook);
 router.post("/DeleteBook", DeleteBook);
 //router.post("/UpdateRoom", UpdateRoomName);
