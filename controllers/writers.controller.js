@@ -1,4 +1,14 @@
 
+var db = require('../db');
+
+const getAllWriters = (req, res) => {
+    db.query("SELECT * FROM writers", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
+
 const getWriterById = (req, res) => {
     db.query(`SELECT * FROM writers where id=${req.params.id}`, function (err, result, fields) {
         if (err) throw err;
@@ -16,6 +26,7 @@ const getWriterIdByName = (req, res) => {
 };
 
 module.exports = {
-    getAllcities,
-    getCityById
+    getAllWriters,
+    getWriterById,
+    getWriterIdByName
 };
