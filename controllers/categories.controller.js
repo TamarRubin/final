@@ -1,3 +1,4 @@
+var db = require('../db');
 const getAllcategories = (req, res) => {
     db.query("SELECT * FROM categories", function (err, result, fields) {
         if (err) throw err;

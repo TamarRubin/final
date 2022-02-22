@@ -1,3 +1,4 @@
+var db = require('../db');
 const getAllneighberhoods = (req, res) => {
     db.query("SELECT * FROM neighberhoods", function (err, result, fields) {
         if (err) throw err;
