@@ -16,6 +16,7 @@ const getWriterIdByName = (req, res) => {
 };
 
 module.exports = {
-    getAllcities,
-    getCityById
+    getAllWriters,
+    getWriterById,
+    getWriterIdByName
 };

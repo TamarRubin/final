@@ -84,8 +84,20 @@ const getAdsByNameBook = (req, res) => {
     });
 };
 
-const getAdsBydId = (req, res) => {
-    db.query(`SELECT * FROM ads where id=${req.params.idads}`, function (err, result, fields) {
+const getAdById = (req, res) => {
+    db.query(`select a.id ,  b.name as book_name, w.name as writer_name,
+    b.picture as book_image, a.price, u.name
+     as user_name, u.phone as user_phone, u.mail as user_mail, p.name as publish, cat.category as category 
+    , c.name as city_name,   n.name as neighberhood_name
+    from ads a
+     inner  join users u on u.id =a.userID
+     inner join books b on b.id= a.bookID
+     inner join writers w on w.id = b.writerID
+     inner join publishing p on p.id = b.publishingID
+     inner join categories cat on cat.id = b.categoryID
+     inner join cities c on c.id = u.cityID
+     inner join neighberhood n on n.id = u.neighberhoodID
+     where a.id=${req.params.id}`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result);
@@ -137,9 +149,8 @@ const DeleteAd = (req, res) => {
 
 module.exports = {
     getAllAds,
-    
     getAllOkAds,
-    getAdsBydId,
+    getAdById,
     AddAd,
     DeleteAd,
     getFirstOkAd

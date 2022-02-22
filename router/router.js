@@ -24,13 +24,13 @@ router.post("/DeleteUser", DeleteUser);
 
 router.get("/getAllAds", getAllAds);
 router.get("/getAllOkAds", getAllOkAds);
-//router.get("/ getAdById", getAdsById);
+router.get("/getAdById/:id", getAdById);
 router.post("/AddAd", AddAd);
 router.post("/DeleteAd", DeleteAd);
 router.get("/getFirstOkAd", getFirstOkAd)
 //router.post("/UpdateCreditcard", UpdateCreditcard);
 
-router.get("./getAllcities", getAllcities)
+router.get("/getAllcities", getAllcities)
 router.get("/getCityById/:id", getCityById);
 
 router.get("./getAllneighberhoods", getAllneighberhoods)
