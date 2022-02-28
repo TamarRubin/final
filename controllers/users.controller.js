@@ -33,11 +33,11 @@ const AddUser = (req, res) => {
   var user_mail=JSON.stringify(req.body.mail)
   var user_password=JSON.stringify(req.body.password)
 
-    
+  var cityID=JSON.stringify(req.body.cityID)
+  var neighberhoodID =JSON.stringify(req.body.neighberhoodID)
 
 
-    db.query(`INSERT INTO users (name,phone,mail,password) VALUES 
-    ( ${user_name},${user_phone},${user_mail},${user_password})`, function (err, result, fields) {
+    db.query(`INSERT INTO users (name,phone,mail,password,cityID,neighberhoodID) VALUES ( ${user_name},${user_phone},${user_mail},${user_password},${cityID},${neighberhoodID})`, function (err, result, fields) {
             if (err) throw err;
             console.log(result);
             res.send(result);

@@ -65,6 +65,14 @@ const getAdsByPublishing = (req, res) => {
         res.send(result);
     });
 };
+const getAdsByCategory = (req, res) => {
+    db.query(`SELECT a.id FROM ads as a join books on a.bookID = books.id join categories on categories.id = books.categoryID
+        where categories.id=${req.params.id} and a.status = 1`, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+};
 
 const getAdsByIsbn = (req, res) => {
     db.query(`SELECT * FROM ads join books on ads.bookID = books.id
@@ -87,7 +95,7 @@ const getAdsByNameBook = (req, res) => {
 const getAdById = (req, res) => {
     db.query(`select a.id ,  b.name as book_name, w.name as writer_name,
     b.picture as book_image, a.price, u.name
-     as user_name, u.phone as user_phone, u.mail as user_mail, p.name as publish, cat.category as category 
+     as user_name, u.phone as user_phone, u.mail as user_mail, p.name as publish, cat.category as category_name,cat.id as category_id 
     , c.name as city_name,   n.name as neighberhood_name
     from ads a
      inner  join users u on u.id =a.userID
@@ -153,5 +161,6 @@ module.exports = {
     getAdById,
     AddAd,
     DeleteAd,
-    getFirstOkAd
+    getFirstOkAd,
+    getAdsByCategory
 };
