@@ -142,5 +142,6 @@ module.exports = {
     getAdsBydId,
     AddAd,
     DeleteAd,
-    getFirstOkAd
+    getFirstOkAd,
+    getAllAdsToConfirm
 };

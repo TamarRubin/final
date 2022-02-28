@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { getAllBooks, getBookById, AddBook, DeleteBook, getIdBookByName, getIdBookByNameNotOk, getAdsByFilters } = require("../controllers/books.controller")
 const { getAllUsers, getUserById, AddUser, DeleteUser, getUserByPassword } = require("../controllers/users.controller")
-const { getAllAds, getAdById, getAllOkAds, getFirstOkAd, AddAd, DeleteAd } = require("../controllers/ads.controller");
+const { getAllAds, getAdById, getAllOkAds, getFirstOkAd, AddAd, DeleteAd ,getAllAdsToConfirm} = require("../controllers/ads.controller");
 const { getAllcities, getCityById } = require("../controllers/cities.controller");
 const { getAllneighberhoods, getNeighberhoodById } = require("../controllers/neighberhoods.controller");
 //const { getAllDeal, getDealById, AddDeal, DeleteDeal, UpdateDeal } = require("../controllers/deal.controller")
@@ -50,6 +50,7 @@ router.get("/getFirstOkAd", getFirstOkAd)
 
 router.get("./getAllcities", getAllcities)
 router.get("/getCityById/:id", getCityById);
+router.get("/getAllAdsToConfirm", getAllAdsToConfirm);
 
 router.get("./getAllneighberhoods", getAllneighberhoods)
 router.get("/getNeighberhoodById/:id", getNeighberhoodById);
